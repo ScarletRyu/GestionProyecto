@@ -5,25 +5,16 @@
 @section('content')
 
   <h2>Proyectos</h2>
-
-    <table>
-      <tr>
-        <th>Id</th>
-        <th>Nombre</th>
-        <th>Titulo</th>
-        <th>Fecha Inicio</th>
-        <th>Fecha fin</th>
-        <th>Horas estimadas</th>
-      </tr>
-
-      <tr>
-        <td>{{$proyecto->id}}</td>
-        <td>{{$proyecto->nombre}}</td>
-        <td>{{$proyecto->titulo}}</td>
-        <td>{{$proyecto->fechainicio}}</td>
-        <td>{{$proyecto->fechainfin}}</td>
-        <td>{{$proyecto->horasestimadas}}</td>
-      </tr>
-    </table>
-
+        <p>Id: {{$proyecto->id}}</p>
+        <p>Nombre: {{$proyecto->nombre}}</p>
+        <p>Titulo: {{$proyecto->titulo}}</p>
+        <p>Fecha Inicio: {{$proyecto->fechainicio}}</p>
+        <p>Fecha fin: {{$proyecto->fechainfin}}</p>
+        <p>Horas estimadas: {{$proyecto->horasestimadas}}</p>
+        @if(!is_null($proyecto->empleado))
+          <p>Responsable: <a href="/empleado/{{$proyecto->empleado->id}}">{{$proyecto->empleado->nombre}}</a></p>
+        @endif
+        @foreach($proyecto->empleado as $pe)
+        <li>Nombre: <a href="/empleado/{{$pe->id}}">{{$pe->nombre}}</a> Fecha Inicio: {{$pe->pivot->fechainicio}} Fecha Fin: {{$pe->pivot->fechafin}}</li>
+    @endforeach
 @endsection

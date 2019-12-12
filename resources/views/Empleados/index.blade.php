@@ -10,6 +10,7 @@
       <tr>
         <th>Id</th>
         <th>Nombre</th>
+        <th>Apellido</th>
         <th>Email</th>
         <th>Telefono</th>
       </tr>
